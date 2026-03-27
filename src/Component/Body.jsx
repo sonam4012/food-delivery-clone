@@ -51,6 +51,7 @@ const Body = () => {
     const [datalist, setDataList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [searchText, setSearchText] = useState("")
 
     useEffect(() => {
         fetchData();
@@ -87,7 +88,25 @@ const Body = () => {
 
     return (
         <div className="body">
-            <div className="search">
+            <div className="filter">
+                <div className="search">
+                <input type="text" className="search-box" value={searchText} 
+                onChange={(e) => {
+                setSearchText(e.target.value)
+
+                }}
+                />
+                 <button onClick={() => {
+                   const filterRestaurents = datalist.filter(
+                    (res) =>  res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                   
+                   );
+                   setFilteredList(filterRestaurents);
+
+                 }}>
+                    Search
+                    </button>
+                </div>
                 <button
                     className="filter-btn"
                     onClick={() => {
