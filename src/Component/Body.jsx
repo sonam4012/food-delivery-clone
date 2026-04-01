@@ -46,6 +46,7 @@
 import { useEffect, useState } from "react";
 import "./Body.css";
 import RestaurantCard from "./RestaurantCard";
+import { Link } from "react-router-dom";
 
 const Body = () => {
     const [datalist, setDataList] = useState([]);
@@ -131,10 +132,11 @@ const Body = () => {
                     // ✅ Fixed path: restaurant.info.id
                     if (!restaurant?.info?.id) return null;
                     return (
-                        <RestaurantCard
-                            key={restaurant.info.id}
+                       <Link key={restaurant.info.id}  to={"/restaurants/" + restaurant.info.id}> <RestaurantCard
                             resdata={restaurant}
+            
                         />
+                        </Link>
                     );
                 })}
             </div>
