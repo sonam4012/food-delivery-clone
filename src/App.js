@@ -6,6 +6,7 @@ import About from './Component/About';
 import Contact from './Component/Contact';
 import Error from './Component/Error';
 import RestaurantMenu from './Component/RestaurantMenu';
+import { render } from '@testing-library/react';
 
 
 function App() {
@@ -25,3 +26,9 @@ function App() {
 }
 
 export default App;
+
+
+
+//  first consturctor is Called 
+//  2nd render
+//  3rd componetdid mount
