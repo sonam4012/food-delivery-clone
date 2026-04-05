@@ -31,4 +31,9 @@ export default App;
 
 //  first consturctor is Called 
 //  2nd render
+// dom render
 //  3rd componetdid mount
+//api call
+//set the render
+// dom update
+//coponent did update
