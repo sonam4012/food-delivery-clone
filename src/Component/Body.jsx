@@ -47,13 +47,14 @@ import { useEffect, useState } from "react";
 import "./Body.css";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     const [datalist, setDataList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchText, setSearchText] = useState("")
-
+    const onlineStatus = useOnlineStatus();
     useEffect(() => {
         fetchData();
     }, []);
@@ -84,8 +85,12 @@ const Body = () => {
         }
     };
 
+    if(onlineStatus === false) return <h1> Looks like you're offline !! Please check your internet</h1>
     if (loading) return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
     if (datalist.length === 0) return <h2 style={{ textAlign: "center" }}>No restaurants found</h2>;
+
+    
+
 
     return (
         <div className="body">
