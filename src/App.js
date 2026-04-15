@@ -1,4 +1,5 @@
 import './App.css';
+import React, {lazy, Suspense} from 'react';
 import Header from "../src/Component/Header";
 import Body from "../src/Component/Body";
 import { Routes, Route } from "react-router-dom";
@@ -6,7 +7,11 @@ import About from './Component/About';
 import Contact from './Component/Contact';
 import Error from './Component/Error';
 import RestaurantMenu from './Component/RestaurantMenu';
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
+// import Grocery from './Component/Grocery';
+
+
+const Grocery = lazy(() => import('./Component/Grocery'));
 
 
 function App() {
@@ -17,6 +22,7 @@ function App() {
         <Route path="/" element={<Body />}/>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/grocery" element={<Suspense fallback={<h1>Loading...</h1>}><Grocery/></Suspense>} />
         <Route path="*" element={<Error />} />
         <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
       </Routes>
