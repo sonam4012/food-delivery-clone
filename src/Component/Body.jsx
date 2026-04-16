@@ -55,6 +55,9 @@ const Body = () => {
     const [loading, setLoading] = useState(true);
     const [searchText, setSearchText] = useState("")
     const onlineStatus = useOnlineStatus();
+
+    // const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -137,11 +140,17 @@ const Body = () => {
                     // ✅ Fixed path: restaurant.info.id
                     if (!restaurant?.info?.id) return null;
                     return (
-                       <Link key={restaurant.info.id}  to={"/restaurants/" + restaurant.info.id}> <RestaurantCard
-                            resdata={restaurant}
-    
-                        />
-                        </Link>
+                       <Link key={restaurant.info.id}  to={"/restaurants/" + restaurant.info.id}> 
+                      <RestaurantCard resdata={restaurant}/>
+                    </Link>
+
+                    //high order function implementation
+                //       <Link key={restaurant.info.id}  to={"/restaurants/" + restaurant.info.id}> 
+                //       {restaurant.data.promoted ? (
+                //        <RestaurantCardPromoted resdata={restaurant}/> 
+                //       ) : ( <RestaurantCard resdata={restaurant}/>
+                //      )}
+                //    </Link>
                     );
                 })}
             </div>
